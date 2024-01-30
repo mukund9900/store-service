@@ -8,6 +8,7 @@ configuration parameters. */
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
+  dialectModule: require("pg"),
   dialectOptions: {
     ssl: {
       require: true,
