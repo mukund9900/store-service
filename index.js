@@ -30,7 +30,7 @@ app.use(
   swaggerUi.serve,
   swaggerUi.setup(swaggerDocument, {
     customCssUrl:
-      "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.0.0/swagger-ui.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css",
   })
 );
 
