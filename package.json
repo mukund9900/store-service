@@ -44,5 +44,8 @@
     "nodemon": "^3.0.3",
     "postman2openapi": "^1.2.0",
     "supertest": "^3.4.2"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
