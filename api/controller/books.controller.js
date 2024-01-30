@@ -1,6 +1,6 @@
 const db = require("../model/psql");
 const Books = db.books;
-const { logger } = require("../winstonLogger");
+const { logger } = require("../../winstonLogger");
 
 const { Op } = require("sequelize");
 const {
@@ -8,7 +8,7 @@ const {
   handleForbiddenError,
   handleUnauthorizedError,
   handleNotFoundError,
-} = require("../utils/customError.handler");
+} = require("../../utils/customError.handler");
 
 let acceptedOptionalFilters = ["genre", "isbn", "availability", "bookId"];
 

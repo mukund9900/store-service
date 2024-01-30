@@ -1,6 +1,6 @@
 /* This code is setting up a connection to a PostgreSQL database using the Sequelize library in
 JavaScript. */
-const dbConfig = require("../../config/postgresql.js");
+const dbConfig = require("../../../config/postgresql.js");
 
 const Sequelize = require("sequelize");
 /* The code is creating a new instance of the Sequelize class and initializing it with the database
