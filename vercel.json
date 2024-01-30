@@ -1,8 +1,10 @@
 {
-    "functions": {
-      "routes/**/*.js": {
-        "runtime": "node@14"
-      }
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "node@14"
+    },
+    "index.js": {
+      "runtime": "node@14"
     }
   }
-  
+}
