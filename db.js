@@ -8,7 +8,7 @@ require("dotenv").config();
 
 
 const {logger} = require("./winstonLogger");
-const pgdb = require("./api/model/psql");
+const pgdb = require("./model/psql");
 
 //relational DB  
 pgdb.sequelize.sync()
