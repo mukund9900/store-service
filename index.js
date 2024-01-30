@@ -52,6 +52,7 @@ app.use(express.json({ limit: "5mb" }));
 app.use(cors());
 
 app.use(express.urlencoded({ extended: false }));
+app.use("/public/css", express.static("public/css"));
 //incase public used
 // app.use(express.static(path.join(__dirname, "public")));
 
@@ -72,9 +73,10 @@ fs.readdirSync(routesDir).forEach((subdirectory) => {
 
 const swaggerUi = require("swagger-ui-express"),
   swaggerDocument = require("./swagger.json");
+const options = { customCssUrl: "/public/css/swagger-ui.css" };
 
 app.use("/api-docs", swaggerUi.serve);
-app.get("/api-docs", swaggerUi.setup(swaggerDocument));
+app.get("/api-docs", swaggerUi.setup(swaggerDocument, options));
 
 app.use(errors());
 
