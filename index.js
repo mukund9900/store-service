@@ -22,18 +22,6 @@ require("./db");
 //app routing
 const fs = require("fs");
 
-const swaggerUi = require("swagger-ui-express"),
-  swaggerDocument = require("./swagger.json");
-
-app.use(
-  "/api-docs",
-  swaggerUi.serve,
-  swaggerUi.setup(swaggerDocument, {
-    customCssUrl:
-      "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css",
-  })
-);
-
 app.use(
   helmet({
     contentSecurityPolicy: {
@@ -81,6 +69,12 @@ fs.readdirSync(routesDir).forEach((subdirectory) => {
     });
   }
 });
+
+const swaggerUi = require("swagger-ui-express"),
+  swaggerDocument = require("./swagger.json");
+
+app.use("/api-docs", swaggerUi.serve);
+app.get("/api-docs", swaggerUi.setup(swaggerDocument));
 
 app.use(errors());
 
