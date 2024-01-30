@@ -1,9 +1,6 @@
 {
   "functions": {
-    "api/**/*.js": {
-      "runtime": "node@14"
-    },
-    "index.js": {
+    "**/*.js": {
       "runtime": "node@14"
     }
   }
