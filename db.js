@@ -16,6 +16,6 @@ pgdb.sequelize.sync()
     logger.debug("Store Service :: Synced db.");
   })
   .catch((err) => {
-    logger.error("Store Service :: Failed to sync db: " + err.message);
+    logger.error("Store Service :: Failed to sync db: " + err.stack);
   });
 

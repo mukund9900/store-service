@@ -2,10 +2,10 @@
 
 // uncomment this and comment below for development
 module.exports = {
-    HOST: "localhost",
+    HOST: "my-database-1.cpeoek6204ty.ap-south-1.rds.amazonaws.com",
     USER: "postgres",
-    PASSWORD: "1234",
-    DB: "bookstore",
+    PASSWORD: "12345678",
+    DB: "initialdb",
     dialect: "postgres",
     pool: {
       max: 5,

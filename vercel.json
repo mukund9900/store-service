@@ -1,0 +1,8 @@
+{
+    "functions": {
+      "routes/**/*.js": {
+        "runtime": "node@14"
+      }
+    }
+  }
+  

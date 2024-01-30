@@ -24,7 +24,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.TEXT,
       },
       publishedDate: {
-        type: Sequelize.BIGINT,
+        type: Sequelize.DATE,
       },
       genre: {
         type: Sequelize.STRING(50),

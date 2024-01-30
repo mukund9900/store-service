@@ -8,6 +8,12 @@ configuration parameters. */
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false, // You might need to adjust this depending on your RDS SSL settings
+    },
+  },
   pool: {
     max: dbConfig.pool.max,
     min: dbConfig.pool.min,
@@ -21,6 +27,6 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.book = require("./bookStore.model.js")(sequelize, Sequelize);
+db.books = require("./bookStore.model.js")(sequelize, Sequelize);
 
 module.exports = db;

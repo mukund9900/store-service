@@ -1,5 +1,3 @@
-
-
 const express = require("express");
 const createError = require("http-errors");
 const path = require("path");
@@ -10,12 +8,8 @@ const app = express();
 const helmet = require("helmet");
 const version = process.env.API_VERSION || `v1`;
 const port = process.env.SERVER_PORT || 3000;
-const { errors } = require('celebrate');
-const {logger} = require("./winstonLogger");
-
-
-
-
+const { errors } = require("celebrate");
+const { logger } = require("./winstonLogger");
 
 logger.debug(
   `Logging for debug purpose urls; mongo :: ${process.env.MONGODB_URL}, upm url:: ${process.env.UPM_URL}`
@@ -28,13 +22,10 @@ require("./db");
 //app routing
 const fs = require("fs");
 
-const swaggerUi = require('swagger-ui-express'), swaggerDocument = require('./swagger.json');
+const swaggerUi = require("swagger-ui-express"),
+  swaggerDocument = require("./swagger.json");
 
-app.use(
-  '/api-docs',
-  swaggerUi.serve,
-  swaggerUi.setup(swaggerDocument)
-);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(
   helmet({
@@ -49,9 +40,7 @@ app.use(
 // Use JSON parser for parsing payloads as JSON on all non-webhook routes.
 app.use((req, res, next) => {
   if (req.originalUrl === `/api/${version}/webhook`) {
-    logger.info(
-      `Store-Service :: webhook originalUrl ${req.originalUrl}`
-    );
+    logger.info(`Store-Service :: webhook originalUrl ${req.originalUrl}`);
     next();
   } else {
     logger.info(`Store-Service :: bodyparsing URL`);
@@ -71,13 +60,13 @@ app.use(express.urlencoded({ extended: false }));
 //incase public used
 // app.use(express.static(path.join(__dirname, "public")));
 
-const routesDir = './routes';
+const routesDir = "./routes";
 fs.readdirSync(routesDir).forEach((subdirectory) => {
   const subdirectoryPath = path.join(routesDir, subdirectory);
 
   if (fs.lstatSync(subdirectoryPath).isDirectory()) {
     fs.readdirSync(subdirectoryPath).forEach((file) => {
-      if (file !== '.DS_Store') {
+      if (file !== ".DS_Store") {
         const routePath = path.join(subdirectoryPath, file);
         const endpoint = `/api`; // Construct the endpoint based on the subdirectory and file name
         app.use(endpoint, require(`./${routePath}`));
